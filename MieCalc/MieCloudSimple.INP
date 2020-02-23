@@ -1,0 +1,10 @@
+mie_program MIEV0 # Select Mie code by Wiscombe
+basename cloud.
+refrac file MieCloudRefrac.DAT# Use refractive index file
+r_eff 0.00322766 100.1 10.0  # Specify effective radius grid
+distribution lognormal 1.8903 # Specify lognormal size distribution
+nstokes 1 # Calculate all phase matrix elements
+nmom 6000 # Number of Legendre terms to be computed
+nthetamax 2000 # Maximum number of scattering angles to be
+output_user netcdf # Write output to netcdf file
+verbose # Print verbose output
