@@ -39,13 +39,8 @@ class Parameters():
     initial parameters from which grids are constructed
     '''
     def __init__(self, filename='parameter_sets.xlsx', directory='parameters/', parameter_set='test_value', from_file=True):
-        print('test')
         df = pd.read_excel(directory + filename)
         param_dict = dict(zip(df['parameter'], df[parameter_set]))
-        param_dict['lat'] = np.arange(param_dict['latitude_min'], param_dict['latitude_max'] + 1, param_dict['latitude_step'])
-        param_dict['lon'] = np.arange(param_dict['longitude_min'], param_dict['longitude_max'] + 1,param_dict['longitude_step'])
-        param_dict['hr'] = np.arange(param_dict['time_min'], param_dict['time_max'] + 1,param_dict['time_step'])
-        param_dict['ls'] = np.arange(param_dict['ls_min'], param_dict['ls_max'] + 1, param_dict['ls_step'])
         self.__dict__.update((k, v) for k, v in param_dict.items())
 
 class Enviornment():
@@ -54,14 +49,45 @@ class Enviornment():
     initial enviornment object into which all downstream objects are loaded. This is the base object for redSun.
     '''
     def __init__(self, filename='parameter_sets.xlsx', directory='parameters/', parameter_set='test_value', from_file=True):
-        self.parameters = Parameters(filename=filename, directory=directory, parameter_set=parameter_set, from_file=from_file)
+        df = pd.read_excel(directory + filename)
+        param_dict = dict(zip(df['parameter'], df[parameter_set]))
+        grid =  xr.Dataset()
+        param_dict.update((i,np.arange(param_dict[i+'_min'], param_dict[i+'_max'] + 1, param_dict[i+'_step'])) for i in ['lat','lon','hr','ls'])
+        self.__dict__.update((k, v) for k, v in param_dict.items())
 
-    def initialize_grid(self, filename='grid_variables.xlsx', directory='parameters/'):
-        data_dict = {}
-        coord_dict {}
 
-        coord_dict.update()
+        for i in ['lat','lon','hr','ls']:
+            grid.coords[i] = (i,param_dict[i])
 
+        flux_dict = get_extraFlux()
+
+        grid.coords['wl'] = ('wl',flux_dict['lambda'])
+        grid.coords['wl'].attrs['unit'] = 'nm'
+
+        grid.coords['level'] = ('level', np.arange(0,20))
+        grid.coords['wl'].attrs['unit'] = 'km'
+        self.grid = grid
+
+
+
+    # def initialize
+
+    # def initialize_grid(self, filename='mcd_grid_variables.xlsx', directory='parameters/'):
+    #     df_data = pd.read_excel(directory+filename,sheet_name='data')
+    #
+    #     n = 0
+    #     for i in df_data['var_name']:
+    #         dims = df_data['dims'][n].split(',')
+    #         lens = np.zeros(len(dims))
+    #         m = 0
+    #         for j in dims:
+    #             lens[m] = int(len(self.grid.coords[j]))
+    #             m = m + 1
+    #         print(tuple(dims))
+    #         print(np.array(lens))
+    #         # self.grid[i] = (tuple(dims),np.zeros(tuple(lens)))
+    #         n = n + 1
+    #         return lens
 
 ## Define Functions
 
