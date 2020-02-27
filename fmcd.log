@@ -6,7 +6,7 @@ unifing config_fc, config, build_clib, build_ext, build commands --fcompiler opt
 running build_src
 build_src
 building extension "fmcd" sources
-creating /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/src.macosx-10.9-x86_64-3.8
+creating /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6
 f2py options: []
 f2py: fmcd.pyf
 Reading fortran codes...
@@ -109,7 +109,7 @@ Building modules...
 		Constructing wrapper function "season2"...
 		  season2(ls,numsaison,nums2,wl,wh,dust)
 		Constructing wrapper function "sol2ls"...
-		  sol2ls(sol,ls)
+		  sol2ls(sol)
 		Creating wrapper for Fortran function "ls2sol"("ls2sol")...
 		Constructing wrapper function "ls2sol"...
 		  ls2sol = ls2sol(ls)
@@ -184,13 +184,13 @@ getarrdims:warning: assumed shape array, using 0 instead of '*'
 		  v0,omega,ae,gm,clm,slm
 		Constructing COMMON block support for "sqr"...
 		  lmin,lmax,root,requator
-	Wrote C/API module "fmcd" to file "/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/src.macosx-10.9-x86_64-3.8/fmcdmodule.c"
-	Fortran 77 wrappers are saved to "/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/src.macosx-10.9-x86_64-3.8/fmcd-f2pywrappers.f"
-  adding '/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/src.macosx-10.9-x86_64-3.8/fortranobject.c' to sources.
-  adding '/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/src.macosx-10.9-x86_64-3.8' to include_dirs.
-copying /Users/aaronberliner/anaconda3/envs/rsenv/lib/python3.8/site-packages/numpy/f2py/src/fortranobject.c -> /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/src.macosx-10.9-x86_64-3.8
-copying /Users/aaronberliner/anaconda3/envs/rsenv/lib/python3.8/site-packages/numpy/f2py/src/fortranobject.h -> /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/src.macosx-10.9-x86_64-3.8
-  adding '/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/src.macosx-10.9-x86_64-3.8/fmcd-f2pywrappers.f' to sources.
+	Wrote C/API module "fmcd" to file "/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fmcdmodule.c"
+	Fortran 77 wrappers are saved to "/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fmcd-f2pywrappers.f"
+  adding '/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fortranobject.c' to sources.
+  adding '/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6' to include_dirs.
+copying /Users/aaronberliner/anaconda3/lib/python3.6/site-packages/numpy/f2py/src/fortranobject.c -> /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6
+copying /Users/aaronberliner/anaconda3/lib/python3.6/site-packages/numpy/f2py/src/fortranobject.h -> /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6
+  adding '/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fmcd-f2pywrappers.f' to sources.
 build_src: building npy-pkg config files
 running build_ext
 new_compiler returns <class 'distutils.unixccompiler.UnixCCompiler'>
@@ -199,16 +199,16 @@ customize UnixCCompiler using build_ext
 ********************************************************************************
 <class 'distutils.unixccompiler.UnixCCompiler'>
 preprocessor  = ['gcc', '-E']
-compiler      = ['gcc', '-Wno-unused-result', '-Wsign-compare', '-Wunreachable-code', '-DNDEBUG', '-g', '-fwrapv', '-O3', '-Wall', '-Wstrict-prototypes', '-I/Users/aaronberliner/anaconda3/envs/rsenv/include', '-arch', 'x86_64', '-I/Users/aaronberliner/anaconda3/envs/rsenv/include', '-arch', 'x86_64']
-compiler_so   = ['gcc', '-Wno-unused-result', '-Wsign-compare', '-Wunreachable-code', '-DNDEBUG', '-g', '-fwrapv', '-O3', '-Wall', '-Wstrict-prototypes', '-I/Users/aaronberliner/anaconda3/envs/rsenv/include', '-arch', 'x86_64', '-I/Users/aaronberliner/anaconda3/envs/rsenv/include', '-arch', 'x86_64']
+compiler      = ['gcc', '-Wno-unused-result', '-Wsign-compare', '-Wunreachable-code', '-DNDEBUG', '-g', '-fwrapv', '-O3', '-Wall', '-Wstrict-prototypes', '-I/Users/aaronberliner/anaconda3/include', '-arch', 'x86_64', '-I/Users/aaronberliner/anaconda3/include', '-arch', 'x86_64']
+compiler_so   = ['gcc', '-Wno-unused-result', '-Wsign-compare', '-Wunreachable-code', '-DNDEBUG', '-g', '-fwrapv', '-O3', '-Wall', '-Wstrict-prototypes', '-I/Users/aaronberliner/anaconda3/include', '-arch', 'x86_64', '-I/Users/aaronberliner/anaconda3/include', '-arch', 'x86_64']
 compiler_cxx  = ['g++']
-linker_so     = ['gcc', '-bundle', '-undefined', 'dynamic_lookup', '-L/Users/aaronberliner/anaconda3/envs/rsenv/lib', '-arch', 'x86_64', '-L/Users/aaronberliner/anaconda3/envs/rsenv/lib', '-arch', 'x86_64']
+linker_so     = ['gcc', '-bundle', '-undefined', 'dynamic_lookup', '-L/Users/aaronberliner/anaconda3/lib', '-arch', 'x86_64', '-L/Users/aaronberliner/anaconda3/lib', '-arch', 'x86_64']
 linker_exe    = ['gcc']
 archiver      = ['ar', 'rc']
 ranlib        = ['ranlib']
 libraries     = []
 library_dirs  = []
-include_dirs  = ['/Users/aaronberliner/anaconda3/envs/rsenv/include/python3.8']
+include_dirs  = ['/Users/aaronberliner/anaconda3/include/python3.6m']
 ********************************************************************************
 customize Gnu95FCompiler
 find_executable('gfortran')
@@ -217,10 +217,10 @@ customize Gnu95FCompiler using build_ext
 ********************************************************************************
 <class 'numpy.distutils.fcompiler.gnu.Gnu95FCompiler'>
 version_cmd     = ['/usr/local/bin/gfortran', '-dumpversion']
-compiler_f77    = ['/usr/local/bin/gfortran', '-fPIC', '-arch', 'x86_64', '-fPIC', '-O3', '-funroll-loops']
-compiler_f90    = ['/usr/local/bin/gfortran', '-fPIC', '-arch', 'x86_64', '-fPIC', '-O3', '-funroll-loops']
-compiler_fix    = ['/usr/local/bin/gfortran', '-Wall', '-g', '-ffixed-form', '-fno-second-underscore', '-fPIC', '-arch', 'x86_64', '-fPIC', '-O3', '-funroll-loops']
-linker_so       = ['/usr/local/bin/gfortran', '-Wall', '-g', '-arch', 'x86_64', '-Wall', '-g', '-undefined', 'dynamic_lookup', '-bundle']
+compiler_f77    = ['/usr/local/bin/gfortran', '-fPIC', '-m64', '-fPIC', '-O3', '-funroll-loops']
+compiler_f90    = ['/usr/local/bin/gfortran', '-fPIC', '-m64', '-fPIC', '-O3', '-funroll-loops']
+compiler_fix    = ['/usr/local/bin/gfortran', '-Wall', '-g', '-ffixed-form', '-fno-second-underscore', '-fPIC', '-m64', '-fPIC', '-O3', '-funroll-loops']
+linker_so       = ['/usr/local/bin/gfortran', '-Wall', '-g', '-m64', '-Wall', '-g', '-undefined', 'dynamic_lookup', '-bundle']
 archiver        = ['/usr/local/bin/gfortran', '-cr']
 ranlib          = ['/usr/local/bin/gfortran']
 linker_exe      = ['/usr/local/bin/gfortran', '-Wall', '-Wall']
@@ -229,56 +229,61 @@ libraries       = ['gfortran']
 library_dirs    = ['/usr/local/gfortran/lib/gcc/x86_64-apple-darwin16/6.3.0', '/usr/local/gfortran/lib/gcc/x86_64-apple-darwin16/6.3.0/../../..', '/usr/local/gfortran/lib/gcc/x86_64-apple-darwin16/6.3.0/../../..']
 object_switch   = '-o '
 compile_switch  = '-c'
-include_dirs    = ['/Users/aaronberliner/anaconda3/envs/rsenv/include/python3.8']
+include_dirs    = ['/Users/aaronberliner/anaconda3/include/python3.6m']
 ********************************************************************************
 building 'fmcd' extension
 compiling C sources
-C compiler: gcc -Wno-unused-result -Wsign-compare -Wunreachable-code -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes -I/Users/aaronberliner/anaconda3/envs/rsenv/include -arch x86_64 -I/Users/aaronberliner/anaconda3/envs/rsenv/include -arch x86_64
+C compiler: gcc -Wno-unused-result -Wsign-compare -Wunreachable-code -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes -I/Users/aaronberliner/anaconda3/include -arch x86_64 -I/Users/aaronberliner/anaconda3/include -arch x86_64
 
-creating /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/var
-creating /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/var/folders
-creating /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/var/folders/g3
-creating /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/var/folders/g3/nsvk643d58z5069scfw9s3380000gn
-creating /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T
-creating /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh
-creating /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/src.macosx-10.9-x86_64-3.8
-compile options: '-I/Users/aaronberliner/MCD/mcd-python/netcdf/gfortran_netcdf-4.0.1/include -I/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/src.macosx-10.9-x86_64-3.8 -I/Users/aaronberliner/anaconda3/envs/rsenv/lib/python3.8/site-packages/numpy/core/include -I/Users/aaronberliner/anaconda3/envs/rsenv/include/python3.8 -c'
-gcc: /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/src.macosx-10.9-x86_64-3.8/fmcdmodule.c
-gcc: /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/src.macosx-10.9-x86_64-3.8/fortranobject.c
-In file included from /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/src.macosx-10.9-x86_64-3.8/fortranobject.c:2:
-In file included from /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/src.macosx-10.9-x86_64-3.8/fortranobject.h:13:
-In file included from /Users/aaronberliner/anaconda3/envs/rsenv/lib/python3.8/site-packages/numpy/core/include/numpy/arrayobject.h:4:
-In file included from /Users/aaronberliner/anaconda3/envs/rsenv/lib/python3.8/site-packages/numpy/core/include/numpy/ndarrayobject.h:12:
-In file included from /Users/aaronberliner/anaconda3/envs/rsenv/lib/python3.8/site-packages/numpy/core/include/numpy/ndarraytypes.h:1822:
-/Users/aaronberliner/anaconda3/envs/rsenv/lib/python3.8/site-packages/numpy/core/include/numpy/npy_1_7_deprecated_api.h:17:2: warning: "Using deprecated NumPy API, disable it with "          "#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION" [-W#warnings]
+creating /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/var
+creating /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/var/folders
+creating /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/var/folders/g3
+creating /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/var/folders/g3/nsvk643d58z5069scfw9s3380000gn
+creating /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T
+creating /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw
+creating /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6
+compile options: '-I/Users/aaronberliner/MCD/mcd-python/netcdf/gfortran_netcdf-4.0.1/include -I/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6 -I/Users/aaronberliner/anaconda3/lib/python3.6/site-packages/numpy/core/include -I/Users/aaronberliner/anaconda3/include/python3.6m -c'
+gcc: /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fmcdmodule.c
+gcc: /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fortranobject.c
+In file included from /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fortranobject.c:2:
+In file included from /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fortranobject.hIn file included from /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fmcdmodule.c:16:
+In file included from /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fortranobject.h:13:
+In file included from /Users/aaronberliner/anaconda3/lib/python3.6/site-packages/numpy/core/include/numpy/arrayobject.h:4:
+In file included from :13:
+In file included from /Users/aaronberliner/anaconda3/lib/python3.6/site-packages/numpy/core/include/numpy/arrayobject.h:4:
+In file included from /Users/aaronberliner/anaconda3/lib/python3.6/site-packages/numpy/core/include/numpy/ndarrayobject.h:12:
+In file included from /Users/aaronberliner/anaconda3/lib/python3.6/site-packages/numpy/core/include/numpy/ndarraytypes.h:1832:
+/Users/aaronberliner/anaconda3/lib/python3.6/site-packages/numpy/core/include/numpy/ndarrayobject.h:12:
+In file included from /Users/aaronberliner/anaconda3/lib/python3.6/site-packages/numpy/core/include/numpy/ndarraytypes.h:1832:
+/Users/aaronberliner/anaconda3/lib/python3.6/site-packages/numpy/core/include/numpy/npy_1_7_deprecated_api.h:17:2: warning: "Using deprecated NumPy API, disable it with "          "#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION" [-W#warnings]
+/Users/aaronberliner/anaconda3/lib/python3.6/site-packages/numpy/core/include/numpy/npy_1_7_deprecated_api.h:17:2: warning: "Using deprecated NumPy API, disable it with "          "#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION" [-W#warnings]
 #warning "Using deprecated NumPy API, disable it with " \
  ^
-In file included from /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/src.macosx-10.9-x86_64-3.8/fmcdmodule.c:16:
-In file included from /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/src.macosx-10.9-x86_64-3.8/fortranobject.h:13:
-In file included from /Users/aaronberliner/anaconda3/envs/rsenv/lib/python3.8/site-packages/numpy/core/include/numpy/arrayobject.h:4:
-In file included from /Users/aaronberliner/anaconda3/envs/rsenv/lib/python3.8/site-packages/numpy/core/include/numpy/ndarrayobject.h:12:
-In file included from /Users/aaronberliner/anaconda3/envs/rsenv/lib/python3.8/site-packages/numpy/core/include/numpy/ndarraytypes.h:1822:
-/Users/aaronberliner/anaconda3/envs/rsenv/lib/python3.8/site-packages/numpy/core/include/numpy/npy_1_7_deprecated_api.h:17:2: warning: "Using deprecated NumPy API, disable it with "          "#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION" [-W#warnings]
 #warning "Using deprecated NumPy API, disable it with " \
  ^
-/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/src.macosx-10.9-x86_64-3.8/fmcdmodule.c:256:12: warning: unused function 'f2py_size' [-Wunused-function]
+/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fmcdmodule.c:256:12: warning: unused function 'f2py_size' [-Wunused-function]
 static int f2py_size(PyArrayObject* var, ...)
            ^
 1 warning generated.
 2 warnings generated.
 compiling Fortran sources
-Fortran f77 compiler: /usr/local/bin/gfortran -fPIC -arch x86_64 -fPIC -O3 -funroll-loops
-Fortran f90 compiler: /usr/local/bin/gfortran -fPIC -arch x86_64 -fPIC -O3 -funroll-loops
-Fortran fix compiler: /usr/local/bin/gfortran -Wall -g -ffixed-form -fno-second-underscore -fPIC -arch x86_64 -fPIC -O3 -funroll-loops
-compile options: '-I/Users/aaronberliner/MCD/mcd-python/netcdf/gfortran_netcdf-4.0.1/include -I/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/src.macosx-10.9-x86_64-3.8 -I/Users/aaronberliner/anaconda3/envs/rsenv/lib/python3.8/site-packages/numpy/core/include -I/Users/aaronberliner/anaconda3/envs/rsenv/include/python3.8 -c'
-gfortran:f77: tmp.julian.F
-gfortran:f77: /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/src.macosx-10.9-x86_64-3.8/fmcd-f2pywrappers.f
+Fortran f77 compiler: /usr/local/bin/gfortran -fPIC -m64 -fPIC -O3 -funroll-loops
+Fortran f90 compiler: /usr/local/bin/gfortran -fPIC -m64 -fPIC -O3 -funroll-loops
+Fortran fix compiler: /usr/local/bin/gfortran -Wall -g -ffixed-form -fno-second-underscore -fPIC -m64 -fPIC -O3 -funroll-loops
+compile options: '-I/Users/aaronberliner/MCD/mcd-python/netcdf/gfortran_netcdf-4.0.1/include -I/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6 -I/Users/aaronberliner/anaconda3/lib/python3.6/site-packages/numpy/core/include -I/Users/aaronberliner/anaconda3/include/python3.6m -c'
 gfortran:f77: tmp.call_mcd.F
 gfortran:f77: tmp.heights.F
+gfortran:f77: tmp.julian.F
+gfortran:f77: /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fmcd-f2pywrappers.f
+tmp.call_mcd.F:5915:72:
+
+       call sol2ls(dummy,ls)
+                                                                        1
+Warning: More actual than formal arguments in procedure call at (1)
 tmp.call_mcd.F:7277:53:
 
            call pbl_parameters(1,dimlevs,(/ps/),pplev,z_0,
                                                      1
 Warning: Rank mismatch in argument ‘pz0’ at (1) (rank-1 and scalar)
-/usr/local/bin/gfortran -Wall -g -arch x86_64 -Wall -g -undefined dynamic_lookup -bundle /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/src.macosx-10.9-x86_64-3.8/fmcdmodule.o /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/src.macosx-10.9-x86_64-3.8/fortranobject.o /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/tmp.call_mcd.o /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/tmp.julian.o /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/tmp.heights.o /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh/src.macosx-10.9-x86_64-3.8/fmcd-f2pywrappers.o -L/Users/aaronberliner/MCD/mcd-python/netcdf/gfortran_netcdf-4.0.1/lib -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin16/6.3.0 -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin16/6.3.0/../../.. -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin16/6.3.0/../../.. -lnetcdf -lm -lgfortran -o ./fmcd.cpython-38-darwin.so
-Removing build directory /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmp2u8rneeh
+/usr/local/bin/gfortran -Wall -g -m64 -Wall -g -undefined dynamic_lookup -bundle /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fmcdmodule.o /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fortranobject.o /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/tmp.call_mcd.o /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/tmp.julian.o /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/tmp.heights.o /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fmcd-f2pywrappers.o -L/Users/aaronberliner/MCD/mcd-python/netcdf/gfortran_netcdf-4.0.1/lib -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin16/6.3.0 -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin16/6.3.0/../../.. -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin16/6.3.0/../../.. -lnetcdf -lm -lgfortran -o ./fmcd.cpython-36m-darwin.so
+Removing build directory /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw

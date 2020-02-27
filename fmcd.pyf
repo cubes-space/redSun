@@ -495,9 +495,8 @@ usercode '''
             real :: wh
             integer :: dust
         end subroutine season2
-        subroutine sol2ls(sol,ls) ! in :fmcd:tmp.call_mcd.F
+        subroutine sol2ls(sol) ! in :fmcd:tmp.call_mcd.F
             real :: sol
-            real :: ls
         end subroutine sol2ls
         function ls2sol(ls) ! in :fmcd:tmp.call_mcd.F
             real :: ls

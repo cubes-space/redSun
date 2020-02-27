@@ -18,7 +18,8 @@ import string
 import itertools
 import multiprocessing as mp
 import xarray as xr
-from fmcd import solarzenithangle,sunmarsdistance,sol2ls,ls2sol
+from fmcd import solarzenithangle,sunmarsdistance,ls2sol
+
 
 ## Import additional redSun functions
 from rs_pv_func import *
@@ -49,9 +50,9 @@ class Enviornment():
     initial enviornment object into which all downstream objects are loaded. This is the base object for redSun.
     '''
     def __init__(self, filename='parameter_sets.xlsx', directory='parameters/', parameter_set='test_value', from_file=True):
+        grid =  xr.Dataset()
         df = pd.read_excel(directory + filename)
         param_dict = dict(zip(df['parameter'], df[parameter_set]))
-        grid =  xr.Dataset()
         param_dict.update((i,np.arange(param_dict[i+'_min'], param_dict[i+'_max'] + 1, param_dict[i+'_step'])) for i in ['lat','lon','hr','ls'])
         self.__dict__.update((k, v) for k, v in param_dict.items())
 
@@ -66,21 +67,32 @@ class Enviornment():
         grid.coords['level'] = ('level', np.arange(0,20))
         grid.coords['level'].attrs['unit'] = 'km'
         self.grid = grid
-        print('test')
 
-
-
-    # def initialize
 
     def initialize_grid(self, filename='mcd_grid_variables.xlsx', directory='parameters/'):
+        '''
+        This function initializes the grid based on variables in filename
+        :param filename:
+        :type filename:
+        :param directory:
+        :type directory:
+        :return:
+        :rtype:
+        '''
+
+        ## Get mcd related variables from filename
         df_data = pd.read_excel(directory+filename,sheet_name='data')
 
+        ## Construct unit and coord dictionaries with units and dimensions
         unit_dict = dict(zip(df_data['var_name'],df_data['units']))
         coord_dict = dict(zip(df_data['var_name'],df_data['dims']))
 
+        ## Initialize encoding dictionary
         encoding_dict = {}
         encoding_val = {'zlib':True,'_FillValue':0.0}
 
+
+        ## Loop through variables to initialize dataset as zero arrays and with encoding dict
         for vari in df_data['var_name']:
             coords = coord_dict[vari].split(',')
             zi = [len(self.grid.coords[i]) for i in coords]
@@ -88,28 +100,17 @@ class Enviornment():
             self.grid[vari].attrs['units'] = unit_dict[vari]
             encoding_dict[vari] = encoding_val
 
+        ## Repead process for coords
         df_coord = pd.read_excel(directory + filename, sheet_name='coords')
         unit_dict.update(dict(zip(df_coord['var_name'],df_coord['units'])))
 
+        ## Loop through coords to initialize dataset as zero arrays and with encoding dict
         for vari in df_coord['var_name']:
             self.grid.coords[vari].attrs['units'] = unit_dict[vari]
             encoding_dict[vari] = encoding_val
 
+        ## Store encoding dict in object
         self.encoding_dict = encoding_dict
-
-    #     n = 0
-    #     for i in df_data['var_name']:
-    #         dims = df_data['dims'][n].split(',')
-    #         lens = np.zeros(len(dims))
-    #         m = 0
-    #         for j in dims:
-    #             lens[m] = int(len(self.grid.coords[j]))
-    #             m = m + 1
-    #         print(tuple(dims))
-    #         print(np.array(lens))
-    #         # self.grid[i] = (tuple(dims),np.zeros(tuple(lens)))
-    #         n = n + 1
-    #         return lens
 
     def calc_mcd_grid(self, scenario=1):
         '''
@@ -125,7 +126,6 @@ class Enviornment():
         req = init_mcd(scenario=scenario)
         self.grid.coords['level'] = req.getextvar(3)
         self.grid.coords['level'].attrs['unit'] = 'km'
-
 
         ## Get extraterrestrial flux
         flux_dict = get_extraFlux()
@@ -166,19 +166,13 @@ class Enviornment():
                 for hri in hrvi:
                     sol = ls2sol(lsv[lsi])
                     sol = sol + hrv[hri]/24
-                    ls_corr = sol2ls(sol)
+                    ls_corr = homemade_sol2ls(sol)
                     r = sunmarsdistance(ls_corr)
                     sza = solarzenithangle(latv[lati],ls_corr,hrv[hri])
                     self.grid['sza'][lati, lsi, hri] = sza
                     solar_corr = np.clip(np.cos(np.deg2rad(sza)), a_min=0, a_max=None) * ((1.52368**2)/(r**2))
                     self.grid['solar_corr'][lati, lsi, hri] = solar_corr
                     self.grid['irr_TOA'][lati, lsi, hri, :] = solar_corr * extra_flux
-
-
-
-
-
-
 
 
 ## Define MCD-related functions
@@ -296,3 +290,41 @@ def get_extraFlux(d=1.52368, directory='extras/', filenameIn = 'E490_00.xlsx'):
 
     # export file
     return dict(zip(keys,vals))
+
+def homemade_sol2ls(sol):
+    '''
+    This function takes in a variable sol and returns the aerocentric longitude ls
+    :param sol:
+    :type sol:
+    :return:
+    :rtype:
+    '''
+    t_peri = 485.35
+    N_s = 668.6
+    Ls_peri = 250.99
+    D_s = sol
+    e=0.0934
+    M = 2 * np.pi * ((D_s - t_peri) / N_s)
+    E = calc_E(M)
+    nu = 2 * np.arctan((np.sqrt(((1 + e) / (1 - e))) * np.tan(E / 2)))
+    ls = np.mod((nu*180/np.pi)+Ls_peri,360)
+    return ls
+
+
+def calc_E(M,e=0.0934,n=1000):
+    '''
+    This little function takes in some mean anomaly M and uses it as the starting point to calculate
+    the ecentric anomaly E using fixed point iteration
+    :param M:
+    :type M:
+    :param e:
+    :type e:
+    :param n:
+    :type n:
+    :return:
+    :rtype:
+    '''
+    E = M
+    for k in range(0,n):
+        E = M + e*np.sin(E)
+    return E
