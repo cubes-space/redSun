@@ -18,7 +18,7 @@ import string
 import itertools
 import multiprocessing as mp
 import xarray as xr
-from fmcd import solarzenithangle,sunmarsdistance
+from fmcd import solarzenithangle,sunmarsdistance,sol2ls,ls2sol
 
 ## Import additional redSun functions
 from rs_pv_func import *
@@ -66,6 +66,7 @@ class Enviornment():
         grid.coords['level'] = ('level', np.arange(0,20))
         grid.coords['level'].attrs['unit'] = 'km'
         self.grid = grid
+        print('test')
 
 
 
@@ -149,7 +150,7 @@ class Enviornment():
             for lati in latvi:
                 for hri in hrvi:
                     for loni in lonvi:
-                        mcd_dict = call_mcd(req,latvi[lati],lonvi[loni],lsvi[lsi],hrvi[hri],scenario=scenario)
+                        mcd_dict = call_mcd(req,latv[lati],lonv[loni],lsv[lsi],hrv[hri],scenario=scenario)
                         # return mcd_dict
                         for vari in mcd_dict.keys():
                             if vari in ['alt_datum']:
@@ -161,12 +162,16 @@ class Enviornment():
 
         ## Loop over lat,ls,hr to calculate solar zenith angle, then calculate flux @TOA
         for lsi in lsvi:
-            r = sunmarsdistance(lsvi[lsi])
             for lati in latvi:
                 for hri in hrvi:
-                    sza = solarzenithangle(latvi[lati],lsvi[lsi],hrvi[hri])
+                    sol = ls2sol(lsv[lsi])
+                    sol = sol + hrv[hri]/24
+                    ls_corr = sol2ls(sol)
+                    r = sunmarsdistance(ls_corr)
+                    sza = solarzenithangle(latv[lati],ls_corr,hrv[hri])
                     self.grid['sza'][lati, lsi, hri] = sza
                     solar_corr = np.clip(np.cos(np.deg2rad(sza)), a_min=0, a_max=None) * ((1.52368**2)/(r**2))
+                    self.grid['solar_corr'][lati, lsi, hri] = solar_corr
                     self.grid['irr_TOA'][lati, lsi, hri, :] = solar_corr * extra_flux
 
 
