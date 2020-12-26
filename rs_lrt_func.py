@@ -32,7 +32,11 @@ def write_dust(alt, dust_conc, reff_dust, filename='', path=''):
     dust_profile = dust_profile[dust_profile[2] > 0.003228]
     dust_profile = dust_profile[dust_profile[0] > 0]
     dust_profile.to_csv(filenameFull, sep='\t', index=False, header=False)
-    return filenameFull
+    if len(dust_profile[0]) < 2:
+        check = False
+    else:
+        check = True
+    return filenameFull,check
 
 def write_cloud(alt, iwc, reff_ice, filename='', path=''):
     filenameFull = path+filename+'cloud.DAT'
@@ -41,7 +45,11 @@ def write_cloud(alt, iwc, reff_ice, filename='', path=''):
     cloud_profile = cloud_profile[cloud_profile[2] > 0.003228]
     cloud_profile = cloud_profile[cloud_profile[0] > 0]
     cloud_profile.to_csv(filenameFull, sep='\t', index=False, header=False)
-    return filenameFull
+    if len(cloud_profile[0]) < 2:
+        check = False
+    else:
+        check = True
+    return filenameFull,check
 
 def write_flux(lambdaa,flux_corrected,filename='', path=''):
     filenameFull = path+filename+'flux.DAT'
@@ -50,7 +58,7 @@ def write_flux(lambdaa,flux_corrected,filename='', path=''):
     flux_profile.to_csv(filenameFull, sep='\t', index=False, header=False)
     return filenameFull
 
-def write_input(albedo = .2, profilename = 'input.inp', id='', wl_min=300.5,wl_max=4000,atmos_filename='atmos.DAT', dust_filename='dust.DAT', cloud_filename='cloud.DAT', flux_filename='flux.DAT', datum=0.0):
+def write_input(albedo = .2, profilename = 'input.inp', id='', wl_min=300.5,wl_max=4000,atmos_filename='atmos.DAT', dust_filename='dust.DAT', cloud_filename='cloud.DAT', flux_filename='flux.DAT', datum=0.0, ccheck=True, dcheck=True):
     profile ='''# libRadtran Calc test
 # choose wavelength range for computation
 wavelength {wl_min} {wl_max}
@@ -67,13 +75,18 @@ altitude {datum}
 # corrected for Sun-Mars Distance
 # corrected for geometry
 source solar {flux_filename}
-# setup cloud profile (assuming water clouds)
+'''
+    if ccheck == True:
+        profile = profile + '''# setup cloud profile (assuming water clouds)
 ic_file 1D {cloud_filename}
 ic_properties MieCalc/cloud.mie.cdf interpolate
-# setup dust profile (using aerosol type for dust)
+'''
+    if dcheck == True:
+        profile = profile + '''# setup dust profile (using aerosol type for dust)
 profile_file dust 1D {dust_filename}
 profile_properties dust MieCalc/dust.mie.cdf interpolate
-# reset earth_radius to Martian radius in [km]
+'''
+    profile = profile + '''# reset earth_radius to Martian radius in [km]
 earth_radius 3389.5
 # choose radiative transfer solver
 rte_solver disort pseudospherical
@@ -88,10 +101,7 @@ albedo {albedo}
 quiet
 '''
     text_file = open(id+profilename, "w")
-    text_file.write(profile.format(wl_min=wl_min,wl_max=wl_max,
-                                   atmos_filename=id+atmos_filename, dust_filename=id+dust_filename,
-                                   cloud_filename=id+cloud_filename, flux_filename=id+flux_filename,
-                                   albedo = albedo, datum=datum))
+    text_file.write(profile.format(wl_min=wl_min,wl_max=wl_max,atmos_filename=id+atmos_filename, dust_filename=id+dust_filename, cloud_filename=id+cloud_filename, flux_filename=id+flux_filename, albedo = albedo, datum=datum))
 
 def call_libRadtran(input_filename='input.inp', id='', output_filename='output.DAT'):
     args = 'uvspec < ' + id+input_filename + " > " + id+output_filename

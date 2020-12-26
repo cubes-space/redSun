@@ -18,7 +18,7 @@ import string
 import itertools
 import multiprocessing as mp
 import xarray as xr
-from fmcd import solarzenithangle,sunmarsdistance,ls2sol
+# from fmcd import solarzenithangle,sunmarsdistance,ls2sol
 
 
 ## Import additional redSun functions
@@ -26,11 +26,11 @@ from rs_pv_func import *
 from rs_lrt_func import *
 
 ## Try importing the Mars Climate Database
-try:
-    from mcd3 import mcd
-    print('MCD Imported')
-except:
-    print('MCD Not Imported')
+# try:
+#     from mcd3 import mcd
+#     print('MCD Imported')
+# except:
+#     print('MCD Not Imported')
 
 ## Define Class Objects
 
@@ -380,8 +380,9 @@ def paralell_lrt(inds=[0,10,10,6], filename_netCDF='Initial_Grid.nc'):
                     if libRadtran_return[1] == 0:
                         vals = read_libRadtran(id=id)
                         [lambdaa, edir, eglo, edn, eup, enet, esum] = vals
-                        [edir, eglo, edn, eup, enet, esum] = [edir*1e6, eglo*1e6, edn*1e6, eup*1e6, enet*1e6, esum*1e6]
-                        mcd_lrt_error = calc_mcd_lrt_error(lambdaa*1e-9,eglo,ds['flux_dw_sw'].values)
+                        [edir, eglo, edn, eup, enet, esum] = [edir*1e-3, eglo*1e-3, edn*1e-3, eup*1e-3, enet*1e-3, esum*1e-3]
+                        mcd_lrt_error = calc_mcd_lrt_error(lambdaa,eglo,ds['flux_dw_sw'].values)
+                        print(mcd_lrt_error)
                         vals = SQlim_1bg(np.array(lambdaa)*1e-9, np.array(eglo), ds['temperature'].values[0])
                         [j1_bg_vec,j1_etaPV,j1_etaPEC_H2,j1_etaPEC_NH3,j1_etaPEC_AA, j1_max_etaPV,j1_max_etaPEC_H2,j1_max_etaPEC_NH3,j1_max_etaPEC_AA,j1_bg_PVmax,j1_bg_H2max,j1_bg_NH3max,j1_bg_AAmax] = vals
                         vals = SQlim_2bg(np.array(lambdaa)*1e-9, np.array(eglo), ds['temperature'].values[0])
@@ -527,5 +528,5 @@ def save_singlepoint_netcdf(inds,vals,directory='singlePoints/'):
     test.to_netcdf(directory+id+'_singlePoint.nc')
 
 
-x = paralell_lrt(inds=[0,10,10,6], filename_netCDF='Initial_Grid.nc')
-save_singlepoint_netcdf(x[0],x[1],directory='')
+x = paralell_lrt(inds=[0,11,16,6], filename_netCDF='Initial_Grid.nc')
+# save_singlepoint_netcdf(x[0],x[1],directory='')
