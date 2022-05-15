@@ -1,0 +1,289 @@
+running build
+running config_cc
+unifing config_cc, config, build_clib, build_ext, build commands --compiler options
+running config_fc
+unifing config_fc, config, build_clib, build_ext, build commands --fcompiler options
+running build_src
+build_src
+building extension "fmcd" sources
+creating /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6
+f2py options: []
+f2py: fmcd.pyf
+Reading fortran codes...
+	Reading file 'fmcd.pyf' (format:free)
+Post-processing...
+	Block: fmcd
+			Block: call_mcd
+			Block: pbl_parameters
+			Block: eofpb
+			Block: profi_eof
+			Block: gasdev
+			Block: getsi
+			Block: grid4
+			Block: grwpb
+			Block: loadvar_mcd
+			Block: loadeof
+			Block: mars_ltime
+			Block: mars_lmt0
+			Block: mars_ptime
+			Block: mcd_time
+			Block: opend
+			Block: orbit
+			Block: sunmarsdistance
+			Block: solarzenithangle
+			Block: season
+			Block: season2
+			Block: sol2ls
+			Block: ls2sol
+			Block: var2d
+			Block: interpol
+			Block: extrapol3d
+			Block: get_2d
+			Block: get_3d
+			Block: getsd_2d
+			Block: getsd_3d
+			Block: var3d
+			Block: max2d
+			Block: min2d
+			Block: ran1
+			Block: dust_deposition
+			Block: air_properties
+			Block: build_sigma_hr
+			Block: pres0
+			Block: read_vl
+			Block: calc_factcor
+			Block: nearsurfacenoise
+			Block: colint
+			Block: colcor
+			Block: profi
+			Block: julian
+			Block: heights
+			Block: mola
+			Block: molareoid
+			Block: readcs
+			Block: geoid
+			Block: lgndr
+Post-processing (stage 2)...
+Building modules...
+	Building module "fmcd"...
+		Constructing wrapper function "call_mcd"...
+		  pres,dens,temp,zonwind,merwind,meanvar,extvar,seedout,ier = call_mcd(zkey,xz,xlon,xlat,hireskey,datekey,xdate,localtime,dset,scena,perturkey,seedin,gwlength,extvarkeys)
+		Constructing wrapper function "pbl_parameters"...
+		  t_out,u_out,ustar,tstar = pbl_parameters(ps,pplay,pz0,zzlay,pu,pv,wstar_in,hfmax,zmax,pts,ph,z_out,vhf,vvv,[ngrid,nlay,n_out])
+		Constructing wrapper function "eofpb"...
+		  ier = eofpb(inicoord,scena,pertm,pertr,rdeof,lon,lat,levhi,levlow,levweight,pratio,day,name)
+		Constructing wrapper function "profi_eof"...
+		  ier = profi_eof(inicoord,scena,profile,rdeof,lon,lat,day,toplevpert,name,profile_pert)
+		Creating wrapper for Fortran function "gasdev"("gasdev")...
+		Constructing wrapper function "gasdev"...
+		  gasdev = gasdev(idum)
+		Constructing wrapper function "getsi"...
+		  ier = getsi(xz,zkey,lon,lat,oroheight,areoid,ps,sigma,utime,dset,levhi,levlow,levweight,pratio,itimint,wl,wh,r_gcm,temp_gcm,zareoid,zradius,zsurface,zpressure,zmradius,sheight)
+		Constructing wrapper function "grid4"...
+		  grid4(lon,lat,dlon,dlat,t,u)
+		Constructing wrapper function "grwpb"...
+		  ier = grwpb(dset,pert,rangw1,rangw2,dev,lamda,lon,lat,absheight,rho,u,v,ps,sigma,utime,name,itimint,wl,wh,r_gcm,temp_gcm,sheight,p_pgcm,ps_psgcm)
+		Constructing wrapper function "loadvar_mcd"...
+		  ier = loadvar_mcd(nf,nf_up,nf2,nf_up2,typevar,aps,bps,sigma,pseudoalt)
+		Constructing wrapper function "loadeof"...
+		  ier = loadeof(nf,rdeof,dust,dataset)
+		Constructing wrapper function "mars_ltime"...
+		  localtime,lmeantime = mars_ltime(lon,jdate,ls)
+		Creating wrapper for Fortran function "mars_lmt0"("mars_lmt0")...
+		Constructing wrapper function "mars_lmt0"...
+		  mars_lmt0 = mars_lmt0(djul)
+		Constructing wrapper function "mars_ptime"...
+		  mars_ptime(lon,lt,ut)
+		Constructing wrapper function "mcd_time"...
+		  mcd_time(ut,itime,w)
+		Constructing wrapper function "opend"...
+		  ier = opend(unet,unetm,unetsd,unetm_up,unetsd_up,num,dust,dset)
+		Constructing wrapper function "orbit"...
+		  orbit(date,ls,marsau,outmodelday)
+		Constructing wrapper function "sunmarsdistance"...
+		  marsau = sunmarsdistance(ls)
+		Constructing wrapper function "solarzenithangle"...
+		  solzenang = solarzenithangle(lat,ls,localtime)
+		Constructing wrapper function "season"...
+		  season(ls,numsaison)
+		Constructing wrapper function "season2"...
+		  season2(ls,numsaison,nums2,wl,wh,dust)
+		Constructing wrapper function "sol2ls"...
+		  sol2ls(sol)
+		Creating wrapper for Fortran function "ls2sol"("ls2sol")...
+		Constructing wrapper function "ls2sol"...
+		  ls2sol = ls2sol(ls)
+		Constructing wrapper function "var2d"...
+		  ier = var2d(a,lon,lat,utime,name,itimint,wl,wh,ps_psgcm)
+		Constructing wrapper function "interpol"...
+		  interpol(k,up_low,vtype,pseudoalt)
+		Constructing wrapper function "extrapol3d"...
+		  extrapol3d(vtype,k,up_low,pseudoalt)
+		Constructing wrapper function "get_2d"...
+		  get_2d(nf,k,varname,order)
+		Constructing wrapper function "get_3d"...
+		  get_3d(nf,k,varname,up_low,order)
+		Constructing wrapper function "getsd_2d"...
+		  getsd_2d(nf,vtype,k,varname,order)
+		Constructing wrapper function "getsd_3d"...
+		  getsd_3d(nf,vtype,k,varname,up_low,order)
+		Constructing wrapper function "var3d"...
+		  ier = var3d(a,lon,lat,zsurface,levhi,levlow,levweight,pratio,sheight,p_pgcm,sigma,ps_psgcm,utime,name,itimint,wl,wh)
+		Constructing wrapper function "max2d"...
+		  ier = max2d(a,lon,lat,name,itimint,wl,wh)
+		Constructing wrapper function "min2d"...
+		  ier = min2d(a,lon,lat,name,itimint,wl,wh)
+		Creating wrapper for Fortran function "ran1"("ran1")...
+		Constructing wrapper function "ran1"...
+		  ran1 = ran1(idum)
+		Constructing wrapper function "dust_deposition"...
+		  dep = dust_deposition(ps,temp,rho,mmr,reff)
+		Constructing wrapper function "air_properties"...
+		  cp,gamma,viscosity,rgas = air_properties(t,vmr_co2,vmr_n2,vmr_ar,vmr_o,vmr_co)
+		Constructing wrapper function "build_sigma_hr"...
+		  build_sigma_hr(sigma_gcm,ps_gcm,ps_hr,sigma_hr,p_pgcm)
+		Constructing wrapper function "pres0"...
+		  pres,ierr = pres0(dset,dust,lat,lon,solar,utime,ps_mcd,oro_mcd,wl,wh,alt)
+		Constructing wrapper function "read_vl"...
+		  ierr = read_vl(dset,tab)
+		Constructing wrapper function "calc_factcor"...
+		  ierr = calc_factcor(dset,dust,solar,wl,wh,factcor)
+		Constructing wrapper function "nearsurfacenoise"...
+		  temp_gcm_noise_dev = nearsurfacenoise(ps,ps_noise_dev,ps_noise,temp_gcm_noise,sheight)
+		Constructing wrapper function "colint"...
+		  col_gcm,col_hr = colint(aps,bps,oroheight,ps_gcm,ps_hr,r_gcm,temp_gcm)
+		Constructing wrapper function "colcor"...
+		  a,ier = colcor(lon,lat,utime,name,itimint,wl,wh,col_gcm,col_hr)
+		Constructing wrapper function "profi"...
+		  a,ier = profi(lon,lat,utime,name,itimint,wl,wh,flag_ini,ib,ie)
+		Constructing wrapper function "julian"...
+		  ierr,date = julian(month,day,year,hour,minute,second)
+		Constructing wrapper function "heights"...
+		  ier = heights(dset,xlat,xlon,hireskey,convkey,zradius,zareoid,zsurface)
+		Constructing wrapper function "mola"...
+		  ierr = mola(dset,latitude,longitude,alt)
+		Constructing wrapper function "molareoid"...
+		  molareoid(dset,lon,lat,rareoid)
+		Constructing wrapper function "readcs"...
+		  readcs(mgm)
+		Constructing wrapper function "geoid"...
+		  geoid(dlon,dlat,rg)
+		Constructing wrapper function "lgndr"...
+getarrdims:warning: assumed shape array, using 0 instead of '*'
+getarrdims:warning: assumed shape array, using 0 instead of '*'
+		  lgndr(lmax,m,x,plm,sqr)
+		Constructing COMMON block support for "orogra"...
+		  taborog,tabsubstd,tabareo,tabz0,z_0
+		Constructing COMMON block support for "moyenne"...
+		  var_2d,var_2d2,var_3d,var_3d2
+		Constructing COMMON block support for "rms"...
+		  varrms2d,varrms2d2,varrms3d,varrms3d2,vararms3d,vararms3d2
+		Constructing COMMON block support for "eofs"...
+		  tabeonormu,tabeonormv,tabeonormt,tabeonormp,tabpcsmth,tabpc,tabeops,tabeot,tabeou,tabeov
+		Constructing COMMON block support for "gmm1"...
+		  v0,omega,ae,gm,clm,slm
+		Constructing COMMON block support for "sqr"...
+		  lmin,lmax,root,requator
+	Wrote C/API module "fmcd" to file "/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fmcdmodule.c"
+	Fortran 77 wrappers are saved to "/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fmcd-f2pywrappers.f"
+  adding '/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fortranobject.c' to sources.
+  adding '/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6' to include_dirs.
+copying /Users/aaronberliner/anaconda3/lib/python3.6/site-packages/numpy/f2py/src/fortranobject.c -> /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6
+copying /Users/aaronberliner/anaconda3/lib/python3.6/site-packages/numpy/f2py/src/fortranobject.h -> /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6
+  adding '/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fmcd-f2pywrappers.f' to sources.
+build_src: building npy-pkg config files
+running build_ext
+new_compiler returns <class 'distutils.unixccompiler.UnixCCompiler'>
+customize UnixCCompiler
+customize UnixCCompiler using build_ext
+********************************************************************************
+<class 'distutils.unixccompiler.UnixCCompiler'>
+preprocessor  = ['gcc', '-E']
+compiler      = ['gcc', '-Wno-unused-result', '-Wsign-compare', '-Wunreachable-code', '-DNDEBUG', '-g', '-fwrapv', '-O3', '-Wall', '-Wstrict-prototypes', '-I/Users/aaronberliner/anaconda3/include', '-arch', 'x86_64', '-I/Users/aaronberliner/anaconda3/include', '-arch', 'x86_64']
+compiler_so   = ['gcc', '-Wno-unused-result', '-Wsign-compare', '-Wunreachable-code', '-DNDEBUG', '-g', '-fwrapv', '-O3', '-Wall', '-Wstrict-prototypes', '-I/Users/aaronberliner/anaconda3/include', '-arch', 'x86_64', '-I/Users/aaronberliner/anaconda3/include', '-arch', 'x86_64']
+compiler_cxx  = ['g++']
+linker_so     = ['gcc', '-bundle', '-undefined', 'dynamic_lookup', '-L/Users/aaronberliner/anaconda3/lib', '-arch', 'x86_64', '-L/Users/aaronberliner/anaconda3/lib', '-arch', 'x86_64']
+linker_exe    = ['gcc']
+archiver      = ['ar', 'rc']
+ranlib        = ['ranlib']
+libraries     = []
+library_dirs  = []
+include_dirs  = ['/Users/aaronberliner/anaconda3/include/python3.6m']
+********************************************************************************
+customize Gnu95FCompiler
+find_executable('gfortran')
+Found executable /usr/local/bin/gfortran
+customize Gnu95FCompiler using build_ext
+********************************************************************************
+<class 'numpy.distutils.fcompiler.gnu.Gnu95FCompiler'>
+version_cmd     = ['/usr/local/bin/gfortran', '-dumpversion']
+compiler_f77    = ['/usr/local/bin/gfortran', '-fPIC', '-m64', '-fPIC', '-O3', '-funroll-loops']
+compiler_f90    = ['/usr/local/bin/gfortran', '-fPIC', '-m64', '-fPIC', '-O3', '-funroll-loops']
+compiler_fix    = ['/usr/local/bin/gfortran', '-Wall', '-g', '-ffixed-form', '-fno-second-underscore', '-fPIC', '-m64', '-fPIC', '-O3', '-funroll-loops']
+linker_so       = ['/usr/local/bin/gfortran', '-Wall', '-g', '-m64', '-Wall', '-g', '-undefined', 'dynamic_lookup', '-bundle']
+archiver        = ['/usr/local/bin/gfortran', '-cr']
+ranlib          = ['/usr/local/bin/gfortran']
+linker_exe      = ['/usr/local/bin/gfortran', '-Wall', '-Wall']
+version         = LooseVersion ('6.3.0')
+libraries       = ['gfortran']
+library_dirs    = ['/usr/local/gfortran/lib/gcc/x86_64-apple-darwin16/6.3.0', '/usr/local/gfortran/lib/gcc/x86_64-apple-darwin16/6.3.0/../../..', '/usr/local/gfortran/lib/gcc/x86_64-apple-darwin16/6.3.0/../../..']
+object_switch   = '-o '
+compile_switch  = '-c'
+include_dirs    = ['/Users/aaronberliner/anaconda3/include/python3.6m']
+********************************************************************************
+building 'fmcd' extension
+compiling C sources
+C compiler: gcc -Wno-unused-result -Wsign-compare -Wunreachable-code -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes -I/Users/aaronberliner/anaconda3/include -arch x86_64 -I/Users/aaronberliner/anaconda3/include -arch x86_64
+
+creating /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/var
+creating /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/var/folders
+creating /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/var/folders/g3
+creating /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/var/folders/g3/nsvk643d58z5069scfw9s3380000gn
+creating /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T
+creating /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw
+creating /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6
+compile options: '-I/Users/aaronberliner/MCD/mcd-python/netcdf/gfortran_netcdf-4.0.1/include -I/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6 -I/Users/aaronberliner/anaconda3/lib/python3.6/site-packages/numpy/core/include -I/Users/aaronberliner/anaconda3/include/python3.6m -c'
+gcc: /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fmcdmodule.c
+gcc: /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fortranobject.c
+In file included from /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fortranobject.c:2:
+In file included from /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fortranobject.hIn file included from /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fmcdmodule.c:16:
+In file included from /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fortranobject.h:13:
+In file included from /Users/aaronberliner/anaconda3/lib/python3.6/site-packages/numpy/core/include/numpy/arrayobject.h:4:
+In file included from :13:
+In file included from /Users/aaronberliner/anaconda3/lib/python3.6/site-packages/numpy/core/include/numpy/arrayobject.h:4:
+In file included from /Users/aaronberliner/anaconda3/lib/python3.6/site-packages/numpy/core/include/numpy/ndarrayobject.h:12:
+In file included from /Users/aaronberliner/anaconda3/lib/python3.6/site-packages/numpy/core/include/numpy/ndarraytypes.h:1832:
+/Users/aaronberliner/anaconda3/lib/python3.6/site-packages/numpy/core/include/numpy/ndarrayobject.h:12:
+In file included from /Users/aaronberliner/anaconda3/lib/python3.6/site-packages/numpy/core/include/numpy/ndarraytypes.h:1832:
+/Users/aaronberliner/anaconda3/lib/python3.6/site-packages/numpy/core/include/numpy/npy_1_7_deprecated_api.h:17:2: warning: "Using deprecated NumPy API, disable it with "          "#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION" [-W#warnings]
+/Users/aaronberliner/anaconda3/lib/python3.6/site-packages/numpy/core/include/numpy/npy_1_7_deprecated_api.h:17:2: warning: "Using deprecated NumPy API, disable it with "          "#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION" [-W#warnings]
+#warning "Using deprecated NumPy API, disable it with " \
+ ^
+#warning "Using deprecated NumPy API, disable it with " \
+ ^
+/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fmcdmodule.c:256:12: warning: unused function 'f2py_size' [-Wunused-function]
+static int f2py_size(PyArrayObject* var, ...)
+           ^
+1 warning generated.
+2 warnings generated.
+compiling Fortran sources
+Fortran f77 compiler: /usr/local/bin/gfortran -fPIC -m64 -fPIC -O3 -funroll-loops
+Fortran f90 compiler: /usr/local/bin/gfortran -fPIC -m64 -fPIC -O3 -funroll-loops
+Fortran fix compiler: /usr/local/bin/gfortran -Wall -g -ffixed-form -fno-second-underscore -fPIC -m64 -fPIC -O3 -funroll-loops
+compile options: '-I/Users/aaronberliner/MCD/mcd-python/netcdf/gfortran_netcdf-4.0.1/include -I/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6 -I/Users/aaronberliner/anaconda3/lib/python3.6/site-packages/numpy/core/include -I/Users/aaronberliner/anaconda3/include/python3.6m -c'
+gfortran:f77: tmp.call_mcd.F
+gfortran:f77: tmp.heights.F
+gfortran:f77: tmp.julian.F
+gfortran:f77: /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fmcd-f2pywrappers.f
+tmp.call_mcd.F:5915:72:
+
+       call sol2ls(dummy,ls)
+                                                                        1
+Warning: More actual than formal arguments in procedure call at (1)
+tmp.call_mcd.F:7277:53:
+
+           call pbl_parameters(1,dimlevs,(/ps/),pplev,z_0,
+                                                     1
+Warning: Rank mismatch in argument ‘pz0’ at (1) (rank-1 and scalar)
+/usr/local/bin/gfortran -Wall -g -m64 -Wall -g -undefined dynamic_lookup -bundle /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fmcdmodule.o /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fortranobject.o /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/tmp.call_mcd.o /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/tmp.julian.o /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/tmp.heights.o /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw/src.macosx-10.7-x86_64-3.6/fmcd-f2pywrappers.o -L/Users/aaronberliner/MCD/mcd-python/netcdf/gfortran_netcdf-4.0.1/lib -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin16/6.3.0 -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin16/6.3.0/../../.. -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin16/6.3.0/../../.. -lnetcdf -lm -lgfortran -o ./fmcd.cpython-36m-darwin.so
+Removing build directory /var/folders/g3/nsvk643d58z5069scfw9s3380000gn/T/tmpf143rrgw

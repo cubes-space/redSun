@@ -1,0 +1,35 @@
+# libRadtran Calc test
+# choose wavelength range for computation
+wavelength 300.5 4000
+# load atmosphere profile
+atmosphere_file __NEDHLSHC85atmos.DAT
+# update null mixing ratios
+mixing_ratio CH4 0.0
+mixing_ratio N2O 0.0
+mixing_ratio F11 0.0
+mixing_ratio F12 0.0
+mixing_ratio F22 0.0
+altitude -2.3457500000000002
+# load solar profile
+# corrected for Sun-Mars Distance
+# corrected for geometry
+source solar __NEDHLSHC85flux.DAT
+# setup cloud profile (assuming water clouds)
+ic_file 1D __NEDHLSHC85cloud.DAT
+ic_properties MieCalc/cloud.mie.cdf interpolate
+# setup dust profile (using aerosol type for dust)
+profile_file dust 1D __NEDHLSHC85dust.DAT
+profile_properties dust MieCalc/dust.mie.cdf interpolate
+# reset earth_radius to Martian radius in [km]
+earth_radius 3389.5
+# choose radiative transfer solver
+rte_solver disort pseudospherical
+pseudospherical
+# choose number of streams
+number_of_streams 6
+# define output
+output_user lambda edir eglo edn eup enet esum
+# choose albedo
+albedo 0.19625693187117577
+#verbose
+quiet
